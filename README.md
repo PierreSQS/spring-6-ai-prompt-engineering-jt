@@ -1,6 +1,6 @@
 # Prompt Engineering with Spring AI
 
-This repository contains source code examples used to support my on-line courses about the Spring Framework.
+This repository contains source code examples used to support my on-line courses about the Spring AI Framework.Follow the link [Sec4_Chap28]{https://www.udemy.com/course/spring-ai-beginner-to-guru/learn/lecture/43349686#overview}
 
 ## All Spring Framework Guru Courses
 ### Spring Framework 6
