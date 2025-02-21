@@ -28,10 +28,10 @@ public class MakingTheModelThinkTests extends BaseTestClass {
             Perform the following actions:
             1 - Summarize the following text delimited by triple
             backticks with 1 sentence.
-            2 - Translate the summary into Polish.
-            3 - List each name in the Polish summary.
+            2 - Translate the summary into French.
+            3 - List each name in the French summary.
             4 - Output a json object that contains the following
-            keys: polish_summary, num_names.
+            keys: french_summary, num_names.
             Separate your answers with line breaks.
             Text:
             ```{text}```
@@ -74,6 +74,7 @@ public class MakingTheModelThinkTests extends BaseTestClass {
         PromptTemplate promptTemplate = new PromptTemplate(prompt2Incorrect);
 
         System.out.println(chatModel.call(promptTemplate.create()).getResult().getOutput().getContent());
+        System.out.println("\n### the Current Model: "+chatModel.getDefaultOptions().getModel()+" ###");
     }
 
     String prompt3Correct = """
