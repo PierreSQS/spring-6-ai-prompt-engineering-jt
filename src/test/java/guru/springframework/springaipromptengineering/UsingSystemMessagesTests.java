@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 /**
- * Modified by Pierrot on 27-10-2025.
+ * Created by jt, Spring Framework Guru.
  */
 @SpringBootTest
 class UsingSystemMessagesTests extends BaseTestClass {

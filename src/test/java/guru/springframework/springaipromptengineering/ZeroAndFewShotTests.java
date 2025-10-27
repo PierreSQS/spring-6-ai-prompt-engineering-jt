@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.UUID;
 
 /**
- * Modified by Pierrot on 27-10-2025.
+ * Modified by Pierrot 27.10.2025.
  */
 @SpringBootTest
 class ZeroAndFewShotTests extends BaseTestClass {
@@ -71,9 +71,9 @@ class ZeroAndFewShotTests extends BaseTestClass {
             // java UUID randomUUID is an API cache buster
             PromptTemplate promptTemplate = new PromptTemplate(prompt);
 
-            Prompt thePrompt = new Prompt(promptTemplate.createMessage(Map.of("review" , UUID.randomUUID() + "\n" + review)), openAiChatOptions);
+            Prompt prompt = new Prompt(promptTemplate.createMessage(Map.of("review" , UUID.randomUUID() + "\n" + review)), openAiChatOptions);
 
-            ChatResponse response = chatModel.call(thePrompt);
+            ChatResponse response = chatModel.call(prompt);
 
             System.out.println("#################################\n");
             System.out.println(response.getResult().getOutput().getText());

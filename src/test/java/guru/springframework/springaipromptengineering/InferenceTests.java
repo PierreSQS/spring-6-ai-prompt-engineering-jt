@@ -17,13 +17,13 @@ class InferenceTests extends BaseTestClass {
 
     String review1 = """
             I recently purchased the Stanley 40oz Tumbler in the vibrant Citron color, and I am thoroughly impressed with its performance in every aspect. From its sleek design to its remarkable durability and easy washability, this tumbler has quickly become my go-to companion for all my hydration needs.
-                        
+                       \s
             First and foremost, the Citron color is absolutely stunning. It's bright, cheerful, and adds a pop of personality to my everyday routine. Whether I'm sipping on my flavored water or staying hydrated during a busy work shift, this tumbler stands out in the best way possible.
-                        
+                       \s
             In terms of durability, the Stanley 40oz Tumbler exceeds expectations. Constructed from high-quality stainless steel, it's built to withstand the rigors of daily use and outdoor adventures. I've accidentally dropped it a few times, and not a dent or scratch in sight! Plus, it's dishwasher safe, making cleanup a breeze after a long day.
-                        
+                       \s
             What truly sets this tumbler apart is its sleek and functional design. The slim profile fits perfectly in my hand and cup holder, while the double-wall vacuum insulation keeps my beverages hot or cold for hours on end. Whether I'm enjoying a piping hot cup of hot cocoa or a refreshing cold drink, the Stanley tumbler delivers every time.
-                        
+                       \s
             Overall, I highly recommend the Stanley 40oz Tumbler in Citron to anyone in search of a stylish, durable, and functional hydration solution. It's the perfect companion for any adventure, and its easy washability ensures that it will remain a staple in my daily routine for years to come.""";
 
     String review2 = """
@@ -93,21 +93,21 @@ class InferenceTests extends BaseTestClass {
     }
 
     String angerTestPrompt = """
-            Check if writer of the following reviews is expressing anger. For each review, state the review number 
+            Check if writer of the following reviews is expressing anger. For each review, state the review number\s
             and Give your answer as either yes or no.
-            
+           \s
             Respond using the following format:
             Review 1: yes
             Review 2: no
             Review N: ?
-            
+           \s
             Review 1: ```{review1}```
             Review 2: ```{review2}```
             Review 3: ```{review3}```
             Review 4: ```{review4}```
             Review 5: ```{review5}```
             Review 6: ```{review6}```
-            """;
+           \s""";
 
     @DisplayName("Testing for Anger")
     @Test
@@ -128,44 +128,45 @@ class InferenceTests extends BaseTestClass {
             of satisfaction with the department they work at.\s
             The results revealed that NASA was the most popular\s
             department with a satisfaction rating of 95%.
-                        
+                       \s
             One NASA employee, John Smith, commented on the findings,\s
             stating, "I'm not surprised that NASA came out on top.\s
             It's a great place to work with amazing people and\s
             incredible opportunities. I'm proud to be a part of\s
             such an innovative organization."
-                        
+                       \s
             The results were also welcomed by NASA's management team,\s
             with Director Tom Johnson stating, "We are thrilled to\s
             hear that our employees are satisfied with their work at NASA.\s
             We have a talented and dedicated team who work tirelessly\s
             to achieve our goals, and it's fantastic to see that their\s
             hard work is paying off."
-                        
+                       \s
             The survey also revealed that the\s
             Social Security Administration had the lowest satisfaction\s
             rating, with only 45% of employees indicating they were\s
             satisfied with their job. The government has pledged to\s
             address the concerns raised by employees in the survey and\s
             work towards improving job satisfaction across all departments.
-            """;
+           \s""";
 
     String prompt = """
             Determine five topics that are being discussed in the\s
             following text, which is delimited by triple backticks.
-                        
+                       \s
             Make each item one or two words long.\s
-                        
+                       \s
             Format your response as a list of items separated by commas.
-                        
+                       \s
             Text sample: '''{story}'''
-            """;
+           \s""";
 
     @DisplayName("Inferring for Topics")
     @Test
     void inferTopics() {
         PromptTemplate promptTemplate = new PromptTemplate(prompt);
 
-        System.out.println(chatModel.call(promptTemplate.create(Map.of("story", story))).getResult().getOutput().getText());
+        System.out.println(chatModel.call(promptTemplate.create(Map.of("story", story)))
+                .getResult().getOutput().getText());
     }
 }

@@ -7,10 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Map;
 
 /**
- * Modified by Pierrot on 27-10-2025.
+ * Created by jt, Spring Framework Guru.
  */
 @SpringBootTest
-class GiveClearInstructionsTests extends BaseTestClass {
+public class GiveClearInstructionsTests extends BaseTestClass {
 
     @Test
     void testGetJSON() {
@@ -47,15 +47,15 @@ class GiveClearInstructionsTests extends BaseTestClass {
             You will be provided with text delimited by triple quotes.
             If it contains a sequence of instructions,
             re-write those instructions in the following format:
-                        
+                       \s
             Step 1 - ...
             Step 2 - ...
             Step N - ...
-                        
+                       \s
             If the text does not contain a sequence of instructions, then simply write \\"No steps provided.\\"
-                        
+                       \s
             \\"\\"\\"{text_1}\\"\\"\\"
-            """;
+           \s""";
 
     String cookASteak = """
         Cooking the perfect steak is easy.
@@ -70,9 +70,9 @@ class GiveClearInstructionsTests extends BaseTestClass {
     String bookDescription = """
             Book Elon Musk
             When Elon Musk was a kid in South Africa, he was regularly beaten by bullies. One day a group pushed him down some concrete steps and kicked him until his face was a swollen ball of flesh. He was in the hospital for a week. But the physical scars were minor compared to the emotional ones inflicted by his father, an engineer, rogue, and charismatic fantasist.
-                        
+                       \s
             His father’s impact on his psyche would linger. He developed into a tough yet vulnerable man-child, prone to abrupt Jekyll-and-Hyde mood swings, with an exceedingly high tolerance for risk, a craving for drama, an epic sense of mission, and a maniacal intensity that was callous and at times destructive.
-                        
+                       \s
             At the beginning of 2022—after a year marked by SpaceX launching thirty-one rockets into orbit, Tesla selling a million cars, and him becoming the richest man on earth—Musk spoke ruefully about his compulsion to stir up dramas. “I need to shift my mindset away from being in crisis mode, which it has been for about fourteen years now, or arguably most of my life,” he said.""";
 
     @Test
@@ -84,9 +84,10 @@ class GiveClearInstructionsTests extends BaseTestClass {
 
     @Test
     void testBookDescription() {
-        PromptTemplate promptTemplate = new PromptTemplate(directionsPrompt);
+        PromptTemplate promptTemplate = PromptTemplate.builder().template(directionsPrompt).build();
 
-        System.out.println(chatModel.call(promptTemplate.create(Map.of("text_1", bookDescription))).getResult().getOutput().getText());
+        System.out.println(chatModel.call(promptTemplate
+                .create(Map.of("text_1", bookDescription))).getResult().getOutput().getText());
     }
 
     @Test

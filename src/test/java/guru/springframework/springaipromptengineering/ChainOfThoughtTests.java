@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.PromptTemplate;
 
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 /**
@@ -28,7 +29,10 @@ class ChainOfThoughtTests extends BaseTestClass {
         ChatResponse response = chatModel.call(promptTemplate.create());
 
         //models previously would answer 27
-        System.out.println(response.getResult().getOutput().getText());
+        String answer = response.getResult().getOutput().getText();
+        System.out.println(answer);
+
+        assertThat(answer).isNotNull();
     }
 
     @Test
@@ -47,7 +51,10 @@ class ChainOfThoughtTests extends BaseTestClass {
 
         ChatResponse response = chatModel.call(promptTemplate.create());
 
-        System.out.println(response.getResult().getOutput().getText());
+        String answer = response.getResult().getOutput().getText();
+        System.out.println(answer);
+
+        assertThat(answer).isNotNull();
     }
 
     @Test
@@ -62,6 +69,9 @@ class ChainOfThoughtTests extends BaseTestClass {
         ChatResponse response = chatModel.call(promptTemplate.create());
 
         //models previously would answer 27
-        System.out.println(response.getResult().getOutput().getText());
+        String answer = response.getResult().getOutput().getText();
+        System.out.println(answer);
+
+        assertThat(answer).isNotNull();
     }
 }
