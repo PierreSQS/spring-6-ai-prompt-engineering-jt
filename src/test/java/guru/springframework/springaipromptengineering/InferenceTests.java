@@ -8,10 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Map;
 
 /**
- * Created by jt, Spring Framework Guru.
+ * Modified by Pierrot on 27-10-2025.
  */
 @SpringBootTest
-public class InferenceTests extends BaseTestClass {
+class InferenceTests extends BaseTestClass {
 
     //Using AI to infer the sentiment of a review or topic
 

@@ -11,10 +11,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.List;
 
 /**
- * Created by jt, Spring Framework Guru.
+ * Modified by Pierrot on 27-10-2025.
  */
 @SpringBootTest
-public class UsingSystemMessagesTests extends BaseTestClass {
+class UsingSystemMessagesTests extends BaseTestClass {
 
     @Test
     void cityGuideTest() {

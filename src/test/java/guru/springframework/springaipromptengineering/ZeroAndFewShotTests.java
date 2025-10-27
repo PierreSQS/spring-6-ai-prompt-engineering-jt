@@ -4,25 +4,23 @@ import org.junit.jupiter.api.Test;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
 import org.springframework.ai.chat.prompt.PromptTemplate;
-import org.springframework.ai.model.openai.autoconfigure.OpenAiChatProperties;
 import org.springframework.ai.openai.OpenAiChatOptions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.Map;
 import java.util.UUID;
 
 /**
- * Created by jt, Spring Framework Guru.
+ * Modified by Pierrot on 27-10-2025.
  */
 @SpringBootTest
-public class ZeroAndFewShotTests extends BaseTestClass {
+class ZeroAndFewShotTests extends BaseTestClass {
 
     String review = """
             I get it. Everyone is buying these now after years of not caring about Stanley tumblers because of social media.
             The problem with viral crap like this is we get caught up in fitting in and jumping on the band wagon that we
             fail to see what's wrong with a product before buying it. THIS TUMBLER IS NOT LEAK PROOF. It's not even a little
-            resistent to leaking. Even if you have the top fully closed and the straw taken out, the liquid inside will
+            resistant to leaking. Even if you have the top fully closed and the straw taken out, the liquid inside will
             leak out like crazy if you tip it over even slightly. To me, if I'm going to carry around 30-40oz of hot or
             cold liquids then the tumbler MUST prevent said liquids from coming out. I understand it's not a water bottle,
             but that's a lame technicality that Stanley shouldn't cling to. At a MINIMUM the tumbler should be leak proof
@@ -73,9 +71,9 @@ public class ZeroAndFewShotTests extends BaseTestClass {
             // java UUID randomUUID is an API cache buster
             PromptTemplate promptTemplate = new PromptTemplate(prompt);
 
-            Prompt prompt = new Prompt(promptTemplate.createMessage(Map.of("review" , UUID.randomUUID() + "\n" + review)), openAiChatOptions);
+            Prompt thePrompt = new Prompt(promptTemplate.createMessage(Map.of("review" , UUID.randomUUID() + "\n" + review)), openAiChatOptions);
 
-            ChatResponse response = chatModel.call(prompt);
+            ChatResponse response = chatModel.call(thePrompt);
 
             System.out.println("#################################\n");
             System.out.println(response.getResult().getOutput().getText());
@@ -84,8 +82,8 @@ public class ZeroAndFewShotTests extends BaseTestClass {
 
     /**
      * Few shot - send the model a few examples to help it understand the context of the prompt.
-     *
-     * Example from 'Language Models are Few-Shot Learners' paper: https://arxiv.org/abs/2005.14165
+     * <p>
+     * Example from 'Language Models are Few-Shot Learners' paper: <a href="https://arxiv.org/abs/2005.14165">...</a>
      */
     String whatpuPrompt = """
             A "whatpu" is a small, furry animal native to Tanzania. An example of a sentence that uses
@@ -134,9 +132,9 @@ public class ZeroAndFewShotTests extends BaseTestClass {
 
     @Test
     void AiHallucinationTest() {
-        Prompt prompt = new Prompt("Write sales copy for the new 'professional grade' " +
+        Prompt thePrompt = new Prompt("Write sales copy for the new 'professional grade' " +
                 "Denali Advanced Toothbrush by GMC.");
 
-        System.out.println(chatModel.call(prompt).getResult().getOutput().getText());
+        System.out.println(chatModel.call(thePrompt).getResult().getOutput().getText());
     }
 }

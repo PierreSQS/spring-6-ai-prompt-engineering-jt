@@ -7,10 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Map;
 
 /**
- * Created by jt, Spring Framework Guru.
+ * Modified by Pierrot on 27-10-2025.
  */
 @SpringBootTest
-public class MakingTheModelThinkTests extends BaseTestClass {
+class MakingTheModelThinkTests extends BaseTestClass {
 
     String story = """
         In a charming village, siblings Jack and Jill set out on
@@ -28,10 +28,10 @@ public class MakingTheModelThinkTests extends BaseTestClass {
             Perform the following actions:
             1 - Summarize the following text delimited by triple
             backticks with 1 sentence.
-            2 - Translate the summary into Polish.
-            3 - List each name in the Polish summary.
+            2 - Translate the summary into French.
+            3 - List each name in the French summary.
             4 - Output a json object that contains the following
-            keys: polish_summary, num_names.
+            keys: french_summary, num_names.
             Separate your answers with line breaks.
             Text:
             ```{text}```
@@ -139,7 +139,7 @@ public class MakingTheModelThinkTests extends BaseTestClass {
        table, causing the open side of the cup to be in contact with the table. Gravity will cause the ball to fall to the table.
        Someone then picks the cup up without changing its orientation and puts it inside the microwave. Where is the ball 
        now. Determine the position of the ball in each step. Explain 
-       why the ball is postioned where it is.
+       why the ball is positioned where it is.
        """;
 
     @Test

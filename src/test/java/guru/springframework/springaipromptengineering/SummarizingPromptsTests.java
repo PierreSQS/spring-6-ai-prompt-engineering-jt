@@ -7,10 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Map;
 
 /**
- * Created by jt, Spring Framework Guru.
+ * Modified by Pierrot on 27-10-2025.
  */
 @SpringBootTest
-public class SummarizingPromptsTests extends BaseTestClass {
+class SummarizingPromptsTests extends BaseTestClass {
 
     String review1 = """
             "Elon Musk" by Walter Isaacson is an extraordinary biographical exploration of one of the most fascinating and 

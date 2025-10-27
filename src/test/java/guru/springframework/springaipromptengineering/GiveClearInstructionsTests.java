@@ -7,10 +7,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.util.Map;
 
 /**
- * Created by jt, Spring Framework Guru.
+ * Modified by Pierrot on 27-10-2025.
  */
 @SpringBootTest
-public class GiveClearInstructionsTests extends BaseTestClass {
+class GiveClearInstructionsTests extends BaseTestClass {
 
     @Test
     void testGetJSON() {

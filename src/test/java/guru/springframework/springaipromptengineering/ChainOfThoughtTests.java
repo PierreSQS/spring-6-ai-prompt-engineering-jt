@@ -8,9 +8,9 @@ import org.springframework.ai.chat.prompt.PromptTemplate;
 
 
 /**
- * Created by jt, Spring Framework Guru.
+ * Modified by Pierrot on 27-10-2025.
  */
-public class ChainOfThoughtTests extends BaseTestClass {
+class ChainOfThoughtTests extends BaseTestClass {
 
     /*
       Chain of thought - adding a series of intermediate reasoning steps to the prompt.
@@ -53,9 +53,9 @@ public class ChainOfThoughtTests extends BaseTestClass {
     @Test
     void testTraditionalPrompt2() {
         String prompt = """
-                Alice left a glass of water outside overnight when the temperature was below freezing. The next morning, 
+                Alice left a glass of water outside overnight when the temperature was below freezing. The next morning,\s
                 she found the glass cracked. Explain step by step why the glass cracked.
-                """.stripIndent();
+               \s""".stripIndent();
 
         PromptTemplate promptTemplate = new PromptTemplate(prompt);
 
