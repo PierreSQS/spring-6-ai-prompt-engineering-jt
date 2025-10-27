@@ -70,7 +70,8 @@ class SummarizingPromptsTests extends BaseTestClass {
     void testCreateDescriptionFromReview() {
         PromptTemplate promptTemplate = new PromptTemplate(reviewPrompt);
 
-        System.out.println(chatModel.call(promptTemplate.create(Map.of("review", review1))).getResult().getOutput().getText());
+        System.out.println(chatModel.call(promptTemplate.create(Map.of("review", review1)))
+                .getResult().getOutput().getText());
     }
 
     String review2 = """
@@ -127,7 +128,7 @@ class SummarizingPromptsTests extends BaseTestClass {
 
     @Test
     void testCreateDescriptionFrom3Reviews() {
-        PromptTemplate promptTemplate = new PromptTemplate(reviewPrompt3);
+        PromptTemplate promptTemplate = PromptTemplate.builder().template(reviewPrompt3).build();
 
         System.out.println(chatModel.call(promptTemplate
                 .create(Map.of("review", review1, "review2", review2, "review3", review3)))
@@ -150,7 +151,7 @@ class SummarizingPromptsTests extends BaseTestClass {
 
     @Test
     void testCreateDescriptionFrom3ReviewsExtract() {
-        PromptTemplate promptTemplate = new PromptTemplate(reviewPrompt4);
+        PromptTemplate promptTemplate = PromptTemplate.builder().template(reviewPrompt4).build();
 
         System.out.println(chatModel.call(promptTemplate
                 .create(Map.of("review", review1, "review2", review2, "review3", review3)))
